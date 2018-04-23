@@ -1,0 +1,108 @@
+// Typography
+
+@font-face {
+    font-family: 'Akzidenz Grotesk Regular';
+    src:url('../fonts/AG-Regular.woff2') format('woff2'),
+        url('../fonts/AG-Regular.woff') format('woff'),
+        url('../fonts/AG-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Akzidenz Grotesk Condensed';
+    src:url('../fonts/AG-Condensed.woff2') format('woff2'),
+        url('../fonts/AG-Condensed.woff') format('woff'),
+        url('../fonts/AG-Condensed.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Akzidenz Grotesk Extended';
+    src:url('../fonts/AG-Extended.woff2') format('woff2'),
+        url('../fonts/AG-Extended.woff') format('woff'),
+        url('../fonts/AG-Extended.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Akzidenz Grotesk Extended Bold';
+    src:url('../fonts/AG-Bold-Extended.woff2') format('woff2'),
+        url('../fonts/AG-Bold-Extended.woff') format('woff'),
+        url('../fonts/AG-Bold-Extended.ttf') format('truetype');
+}
+%font-regular {
+    font-family: 'Akzidenz Grotesk Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+%font-condensed {
+    font-family: 'Akzidenz Grotesk Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+%font-extended {
+    font-family: 'Akzidenz Grotesk Extended', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+%font-extended-bold {
+    font-family: 'Akzidenz Grotesk Extended Bold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+::selection {
+    background-color: $color_white;
+    color: $color_black;
+}
+
+html {
+    -webkit-font-smoothing: antialiased; // Fix fatty fonts
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: regular;
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1;
+    font-kerning: normal;
+    color: $color_black;
+    @extend %font-regular;
+}
+
+h1,
+h2,
+h3,
+p,
+blockquote {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+}
+
+h1 {
+    @extend %font-extended-bold;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    font-size: $size_base;
+
+    @include for-desktop-up {
+        // font-size: 1.6em;
+    }
+}
+
+h2, h3 {
+    font-size: $size_small;
+    @extend %font-extended-bold;
+    letter-spacing: .1em;
+    margin-top: .2em;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: $size_smallest;
+}
+
+h4 {
+    font-size: $size_large;
+    @extend %font-extended-bold;
+    margin: 0;
+}
+
+h5 {
+    font-size: $size_small;
+    @extend %font-extended-bold;
+    margin-top: .6em;
+    margin-bottom: 2em;
+}
+
+p {
+    font-size: $size_small;
+    font-weight: lighter;
+}

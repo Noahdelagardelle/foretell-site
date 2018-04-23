@@ -1,0 +1,59 @@
+// Page Animations
+@keyframes linegrow {
+    0%,
+    100% {
+        width: .05em;
+    }
+    50% {
+        width: .3em;
+    }
+}
+
+.lines {
+    animation: linegrow 2s linear infinite;
+    @for $i from 1 through 21 {
+        &:nth-child(#{$i}) {
+            animation-delay: $i * (1s / 10.5);
+        }
+    }
+}
+
+main,
+.project-info-container {
+    opacity: 1;
+    transition: 600ms ease;
+    transition-delay: 300ms;
+    &.fade--in {
+        opacity: 0;
+    }
+}
+
+.slide-in--left {
+    transform: translateX(100%);
+}
+
+.slide-in--up {
+    transform: translateY(-100%);
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.animate-in-mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $color_black;
+    z-index: $z_high;
+    &.is-visible {
+        animation: slideIn 900ms ease-in forwards;
+    }
+}
