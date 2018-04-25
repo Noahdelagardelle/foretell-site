@@ -83,6 +83,9 @@ h2, h3 {
     letter-spacing: .1em;
     margin-top: .2em;
     text-transform: uppercase;
+    @include for-phone-only {
+        font-size: $size_small_med;
+    }
 }
 
 h3 {

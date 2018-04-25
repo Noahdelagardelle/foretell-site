@@ -54,6 +54,6 @@ main,
     background-color: $color_black;
     z-index: $z_high;
     &.is-visible {
-        animation: slideIn 900ms ease-in forwards;
+        animation: slideIn 600ms ease-in forwards;
     }
 }

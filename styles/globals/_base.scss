@@ -7,6 +7,19 @@ html, body {
     position: relative;
 }
 
+.poster-container {
+    cursor: s-resize;
+}
+
+.img-responsive {
+    width: 100%;
+    height: auto;
+    @include for-tablet-landscape-up {
+        height: 100%;
+        width: auto;
+    }
+}
+
 .coming-soon-container {
     position: fixed;
     top: 0;
@@ -19,6 +32,9 @@ html, body {
     justify-content: center;
     align-items: center;
     text-align: center;
+
+    display: none;
+
     h1 {
         font-size: $size_base_large;
     }
@@ -40,13 +56,27 @@ html, body {
 }
 
 .poster-container {
-    @extend %font-extended;
     font-size: $size_base_small;
 	display: grid;
     grid-template-columns: 50% 50%;
     @include for-desktop-up {
         grid-template-columns: repeat(4, 25%);
     }
+}
+
+.poster-container-footer {
+    @extend %font-extended;
+    font-size: $size_base_small;
+	display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    @include for-desktop-up {
+        grid-template-columns: repeat(8, 1fr);
+    }
+}
+
+.disabled {
+    cursor: not-allowed;
+    opacity: .5;
 }
 
 .animation-lines-container {
@@ -64,30 +94,53 @@ html, body {
 		right: 0;
 		bottom: 0;
         left: 0;
-	}
-	.question-container {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-        transform: translateY(100%);
-		
-		background: black;
-		color: white;
-		transition: 250ms ease;
-		&.hovered {
-            transform: translateY(0);
-        }
-        // @include for-phone-only {
-        //     display: none;
-        // }
-    }
-    .question {
-        margin: 2em;
     }
     p {
         margin: 0;
+    }
+}
+
+.question {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $color_black;
+    color: $color_white;
+    // background-color: $color_white;
+    // color: $color_black;
+    transform: translateY(100%);
+    transition: 900ms ease;
+    &.question-reveal {
+        transform: translateY(0);
+    }
+    @include for-phone-only {
+        display: none;
+    }
+    .question-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: calc(25vw - 2rem);
+        padding: 1rem;
+        .question-heading {
+            @extend %font-extended-bold;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            font-size: $size_base_small;
+            // margin: 1rem;
+        }
+        .question-text {
+            @extend %font-condensed;
+            line-height: 1.2;
+            font-size: $size_base;
+            // margin: 1rem;
+            text-align: justify;
+        }
+        .pink {
+            background-color: pink;
+        }
     }
 }
 
@@ -100,6 +153,10 @@ html, body {
     align-items: center;
     .hero-into {
         max-width: 90%;
+    }
+    @include for-phone-only {
+        font-size: $size_smallest;
+        height: 50vw;
     }
 }
 
@@ -120,8 +177,14 @@ svg {
     }
 }
 
+.footer-info-container {
+    height: 25vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .project-grid-container {
-    height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     @include for-desktop-up {
@@ -135,39 +198,270 @@ svg {
     height: 25vw;
     overflow: hidden;
     text-decoration: none;
+    height: 50vw;
+    @include for-desktop-up {
+        height: 25vw;
+    }
 }
 
 .project-logo {
     position: relative;
     height: 100%;
-    width: 75%;
+    width: 40%;
     margin: 0 auto;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
     transition: 300ms ease;
-    &:hover {
-        height: 70%;
+    &.project-card-hovered {
+        height: 80%;
     }
 }
 
-.project-info h3 {
+.project-card-name {
+    opacity: 0;
     text-align: center;
+    transition: 300ms ease;
+    &.name-reveal {
+        transform: translateY(-1rem);
+        opacity: 1;
+    }
 }
 
 .p-1 .project-logo {
-    background-image: url('/images/logos/logo-white.png');
-    &:hover {
-        background-image: url('/images/logos/logo-color.png');
+    background-image: url('/images/Albrecht_Rachel/albrecht_rachel_white.png');
+    &.color-logo {
+        background-image: url('/images/Albrecht_Rachel/albrecht_rachel_color.png');
     }
 }
 
-.img-responsive {
-    width: 100%;
-    height: auto;
-    @include for-tablet-landscape-up {
-        height: 100%;
-        width: auto;
+.p-2 .project-logo {
+    background-image: url('/images/Asta_August/asta_august_white.png');
+    &.color-logo {
+        background-image: url('/images/Asta_August/asta_august_color.png');
     }
 }
 
+.p-3 .project-logo {
+    background-image: url('/images/Becher_Grace/becher_grace_white.png');
+    &.color-logo {
+        background-image: url('/images/Becher_Grace/becher_grace_color.png');
+    }
+}
+
+.p-4 .project-logo {
+    background-image: url('/images/Clinton_Katie/clinton_katie_white.png');
+    &.color-logo {
+        background-image: url('/images/Clinton_Katie/clinton_katie_color.png');
+    }
+}
+
+.p-5 .project-logo {
+    background-image: url('/images/Collier_Eric/collier_eric_white.png');
+    &.color-logo {
+        background-image: url('/images/Collier_Eric/collier_eric_color.png');
+    }
+}
+
+.p-6 .project-logo {
+    background-image: url('/images/Darton_Holly/darton_holly_white.png');
+    &.color-logo {
+        background-image: url('/images/Darton_Holly/darton_holly_color.png');
+    }
+}
+
+.p-7 .project-logo {
+    background-image: url('/images/Delagardelle_Noah/delagardelle_noah_white.png');
+    &.color-logo {
+        background-image: url('/images/Delagardelle_Noah/delagardelle_noah_color.png');
+    }
+}
+
+.p-8 .project-logo {
+    background-image: url('/images/Elmer_Kelli/elmer_kelli_white.png');
+    &.color-logo {
+        background-image: url('/images/Elmer_Kelli/elmer_kelli_color.png');
+    }
+}
+
+.p-9 .project-logo {
+    background-image: url('/images/Gerou_Tayler/gerou_tayler_white.png');
+    &.color-logo {
+        background-image: url('/images/Gerou_Tayler/gerou_tayler_color.png');
+    }
+}
+
+.p-10 .project-logo {
+    background-image: url('/images/Geurts_Megan/geurts_megan_white.png');
+    &.color-logo {
+        background-image: url('/images/Geurts_Megan/geurts_megan_color.png');
+    }
+}
+
+.p-11 .project-logo {
+    background-image: url('/images/Guck_Rachel/guck_rachel_white.png');
+    &.color-logo {
+        background-image: url('/images/Guck_Rachel/guck_rachel_color.png');
+    }
+}
+
+.p-12 .project-logo {
+    background-image: url('/images/Jordan_Lauren/jordan_lauren_white.png');
+    &.color-logo {
+        background-image: url('/images/Jordan_Lauren/jordan_lauren_color.png');
+    }
+}
+
+.p-13 .project-logo {
+    background-image: url('/images/Jorgenson_Jamie/jorgenson_jamie_white.png');
+    &.color-logo {
+        background-image: url('/images/Jorgenson_Jamie/jorgenson_jamie_color.png');
+    }
+}
+
+.p-14 .project-logo {
+    background-image: url('/images/Kleven_Taylor/kleven_taylor_white.png');
+    &.color-logo {
+        background-image: url('/images/Kleven_Taylor/kleven_taylor_color.png');
+    }
+}
+
+.p-15 .project-logo {
+    background-image: url('/images/Langley_Lucas/langley_lucas_white.png');
+    &.color-logo {
+        background-image: url('/images/Langley_Lucas/langley_lucas_color.png');
+    }
+}
+
+.p-16 .project-logo {
+    background-image: url('/images/Mayry_Kelsey/mayry_kelsey_white.png');
+    &.color-logo {
+        background-image: url('/images/Mayry_Kelsey/mayry_kelsey_color.png');
+    }
+}
+
+.p-17 .project-logo {
+    background-image: url('/images/Miller_Jenna/miller_jenna_white.png');
+    &.color-logo {
+        background-image: url('/images/Miller_Jenna/miller_jenna_color.png');
+    }
+}
+
+.p-18 .project-logo {
+    background-image: url('/images/Nelson_David/nelson_david_white.png');
+    &.color-logo {
+        background-image: url('/images/Nelson_David/nelson_david_color.png');
+    }
+}
+
+.p-19 .project-logo {
+    background-image: url('/images/Ogurek_Marissa/ogurek_marissa_white.png');
+    &.color-logo {
+        background-image: url('/images/Ogurek_Marissa/ogurek_marissa_color.png');
+    }
+}
+
+.p-20 .project-logo {
+    background-image: url('/images/Peitz_Sabrina/peitz_sabrina_white.png');
+    &.color-logo {
+        background-image: url('/images/Peitz_Sabrina/peitz_sabrina_color.png');
+    }
+}
+
+.p-21 .project-logo {
+    background-image: url('/images/Pfund_Mackenzie/pfund_mackenzie_white.png');
+    &.color-logo {
+        background-image: url('/images/Pfund_Mackenzie/pfund_mackenzie_color.png');
+    }
+}
+
+.p-22 .project-logo {
+    background-image: url('/images/Ries_Rachel/ries_rachel_white.png');
+    &.color-logo {
+        background-image: url('/images/Ries_Rachel/ries_rachel_color.png');
+    }
+}
+
+.p-23 .project-logo {
+    background-image: url('/images/Schuh_Cree/schuh_cree_white.png');
+    &.color-logo {
+        background-image: url('/images/Schuh_Cree/schuh_cree_color.png');
+    }
+}
+
+.p-24 .project-logo {
+    background-image: url('/images/Sipma_Josh/sipma_josh_white.png');
+    &.color-logo {
+        background-image: url('/images/Sipma_Josh/sipma_josh_color.png');
+    }
+}
+
+.p-25 .project-logo {
+    background-image: url('/images/Smith_Kayla/smith_kayla_white.png');
+    &.color-logo {
+        background-image: url('/images/Smith_Kayla/smith_kayla_color.png');
+    }
+}
+
+.p-26 .project-logo {
+    background-image: url('/images/Spiegel_Blake/spiegel_blake_white.png');
+    &.color-logo {
+        background-image: url('/images/Spiegel_Blake/spiegel_blake_color.png');
+    }
+}
+
+.p-27 .project-logo {
+    background-image: url('/images/Strait_Katrina/strait_katrina_white.png');
+    &.color-logo {
+        background-image: url('/images/Strait_Katrina/strait_katrina_color.png');
+    }
+}
+
+.p-28 .project-logo {
+    background-image: url('/images/Strom_Keenan/strom_keenan_white.png');
+    &.color-logo {
+        background-image: url('/images/Strom_Keenan/strom_keenan_color.png');
+    }
+}
+
+.p-29 .project-logo {
+    background-image: url('/images/Vogel_Hannah/vogel_hannah_white.png');
+    &.color-logo {
+        background-image: url('/images/Vogel_Hannah/vogel_hannah_color.png');
+    }
+}
+
+.p-30 .project-logo {
+    background-image: url('/images/Wagner_Dan/wagner_dan_white.png');
+    &.color-logo {
+        background-image: url('/images/Wagner_Dan/wagner_dan_color.png');
+    }
+}
+
+.p-31 .project-logo {
+    background-image: url('/images/Weiss_Ashley/weiss_ashley_white.png');
+    &.color-logo {
+        background-image: url('/images/Weiss_Ashley/weiss_ashley_color.png');
+    }
+}
+
+.p-32 .project-logo {
+    background-image: url('/images/Welke_Jenna/welke_jenna_white.png');
+    &.color-logo {
+        background-image: url('/images/Welke_Jenna/welke_jenna_color.png');
+    }
+}
+
+.p-33 .project-logo {
+    background-image: url('/images/Werner_Lila/werner_lila_white.png');
+    &.color-logo {
+        background-image: url('/images/Werner_Lila/werner_lila_color.png');
+    }
+}
+
+.p-34 .project-logo {
+    background-image: url('/images/Westphal_Andrew/westphal_andrew_white.png');
+    &.color-logo {
+        background-image: url('/images/Westphal_Andrew/westphal_andrew_color.png');
+    }
+}
