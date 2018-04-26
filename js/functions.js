@@ -22,6 +22,15 @@ $(document).ready(function () {
         }
     );
 
+    $('.letter--question').hover(
+        function () {
+            $(this).find('.mask-letter').addClass('mask-letter--hover');
+        },
+        function () {
+            $(this).find('.mask-letter').removeClass('mask-letter--hover');
+        }
+    );
+
     $('.project-info-container').removeClass('fade--in');
     setTimeout(function () {
         $('.project-navigation').removeClass('fade--in');
@@ -33,22 +42,10 @@ $(document).ready(function () {
         }, 100 * i);
     });
 
-    setTimeout(function () {
-        $('.animation-lines-container .question').each(function (i) {
-            setTimeout(function () {
-                $('.animation-lines-container .question').eq(i).addClass('question-reveal');
-            }, 300 * i);
-            setTimeout(function () {
-                $('.animation-lines-container:nth-child(1)').eq(i).addClass('pink');
-            }, 400 * i);
-        });
-    }, 3000);
-
-    // $('.main-carousel').flickity({
-    //     cellAlign: 'left',
-    //     contain: true,
-    //     wrapAround: true,
-    //     fullscreen: true,
-    //     lazyLoad: 1
-    // });
+    $('.letter--question').click(function () {
+        $(this).find('.question').toggleClass('question-reveal');
+        $(this).find('.question-container div:nth-child(1)').toggleClass('question-text-reveal');
+        $(this).find('.question-container div:nth-child(2)').toggleClass('question-text-reveal');
+        $(this).find('.question-container div:nth-child(3)').toggleClass('question-text-reveal');
+    });
 });

@@ -109,7 +109,16 @@
 }
 
 .flickity-page-dots {
-    display: none;
+    top: 3.5rem;
+    bottom: auto;
+    @include for-desktop-only {
+        display: none;
+    }
+    .dot {
+        background-color: $color_white;
+        height: .2rem;
+        width: .2rem;
+    }
 }
 
 .flickity-prev-next-button {

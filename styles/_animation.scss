@@ -3,9 +3,11 @@
     0%,
     100% {
         width: .05em;
+        // transform: scale(1);
     }
     50% {
         width: .3em;
+        // transform: scale(1.2);
     }
 }
 
