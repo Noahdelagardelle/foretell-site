@@ -128,15 +128,17 @@ html, body {
             @extend %font-extended-bold;
             letter-spacing: .1em;
             text-transform: uppercase;
-            font-size: $size_base_small;
+            font-size: $size_small;
             // margin: 1rem;
         }
         .question-text {
-            @extend %font-condensed;
+            // @extend %font-condensed;
             line-height: 1.2;
-            font-size: $size_base;
+            font-size: $size_small;
+            line-height: 1.5;
+            opacity: .5;
             // margin: 1rem;
-            text-align: justify;
+            // text-align: justify;
         }
         .pink {
             background-color: pink;
@@ -157,6 +159,35 @@ html, body {
     @include for-phone-only {
         font-size: $size_smallest;
         height: 50vw;
+    }
+}
+
+.main-info {
+    @include for-phone-only {
+        width: 100vw;
+        h1, h2 {
+            display: block;
+        }
+        .hero-info {
+            @include for-phone-only {
+                width: 100vw;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+            }
+            h1, h2 {
+                @include for-phone-only {
+                    display: block;
+                    font-size: $size_large;
+                    margin: 0 1rem .5rem;
+                }
+            }
+            br {
+                @include for-phone-only {
+                    display: none;
+                }
+            }
+        }
     }
 }
 
