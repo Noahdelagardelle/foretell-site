@@ -97,6 +97,7 @@ html, body {
         transition: 300ms ease;
         &.mask-letter--hover {
             fill: $color_white;
+            // fill: blue;
         }
     }
     p {
@@ -212,7 +213,8 @@ svg {
 }
 
 .lines {
-	fill: white;
+    fill: white;
+    // fill: $color_black;
 	width: .1em;
 	height: 200%;
 }
@@ -253,7 +255,7 @@ svg {
 .project-logo {
     position: relative;
     height: 100%;
-    width: 40%;
+    width: 25%;
     margin: 0 auto;
     background-position: center;
     background-size: contain;

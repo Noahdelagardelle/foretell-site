@@ -22,15 +22,6 @@ $(document).ready(function () {
         }
     );
 
-    $('.letter--question').hover(
-        function () {
-            $(this).find('.mask-letter').addClass('mask-letter--hover');
-        },
-        function () {
-            $(this).find('.mask-letter').removeClass('mask-letter--hover');
-        }
-    );
-
     $('.project-info-container').removeClass('fade--in');
     setTimeout(function () {
         $('.project-navigation').removeClass('fade--in');
@@ -42,10 +33,34 @@ $(document).ready(function () {
         }, 100 * i);
     });
 
-    $('.letter--question').click(function () {
-        $(this).find('.question').toggleClass('question-reveal');
-        $(this).find('.question-container div:nth-child(1)').toggleClass('question-text-reveal');
-        $(this).find('.question-container div:nth-child(2)').toggleClass('question-text-reveal');
-        $(this).find('.question-container div:nth-child(3)').toggleClass('question-text-reveal');
-    });
+    $('.letter--question').hover(
+        function () {
+            $(this).find('.question').toggleClass('question-reveal');
+            $(this).find('.question-container div:nth-child(1)').addClass('question-text-reveal');
+            $(this).find('.question-container div:nth-child(2)').addClass('question-text-reveal');
+            $(this).find('.question-container div:nth-child(3)').addClass('question-text-reveal');
+        },
+        function () {
+            $(this).find('.question').toggleClass('question-reveal');
+            $(this).find('.question-container div:nth-child(1)').removeClass('question-text-reveal');
+            $(this).find('.question-container div:nth-child(2)').removeClass('question-text-reveal');
+            $(this).find('.question-container div:nth-child(3)').removeClass('question-text-reveal');
+        }
+    );
+
+    // $('.letter--question').hover(
+    //     function () {
+    //         $(this).find('.mask-letter').addClass('mask-letter--hover');
+    //     },
+    //     function () {
+    //         $(this).find('.mask-letter').removeClass('mask-letter--hover');
+    //     }
+    // );
+
+    // $('.letter--question').click(function () {
+    //     $(this).find('.question').toggleClass('question-reveal');
+    //     $(this).find('.question-container div:nth-child(1)').toggleClass('question-text-reveal');
+    //     $(this).find('.question-container div:nth-child(2)').toggleClass('question-text-reveal');
+    //     $(this).find('.question-container div:nth-child(3)').toggleClass('question-text-reveal');
+    // });
 });

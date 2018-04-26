@@ -3,15 +3,18 @@
     0%,
     100% {
         width: .05em;
-        // transform: scale(1);
     }
+    // 10% {
+    //     fill: $color_white;
+    // }
     50% {
         width: .3em;
-        // transform: scale(1.2);
+        fill: $color_white;
     }
 }
 
 .lines {
+    transform-origin: center center;
     animation: linegrow 2s linear infinite;
     @for $i from 1 through 21 {
         &:nth-child(#{$i}) {
