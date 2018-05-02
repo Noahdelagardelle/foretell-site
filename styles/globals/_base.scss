@@ -20,29 +20,6 @@ html, body {
     }
 }
 
-.coming-soon-container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: $z_ceiling;
-    background-color: $color_black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    display: none;
-
-    h1 {
-        font-size: $size_base_large;
-    }
-    h2 {
-        opacity: .5;
-    }
-}
-
 .flip--180 {
 	transform: rotate(180deg);
 }
@@ -57,10 +34,10 @@ html, body {
 
 .poster-container {
     font-size: $size_base_small;
-	display: grid;
-    grid-template-columns: 50% 50%;
-    @include for-desktop-up {
-        grid-template-columns: repeat(4, 25%);
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    @include for-phone-only {
+        grid-template-columns: 50% 50%;
     }
 }
 
@@ -224,9 +201,9 @@ svg {
 
 .project-grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    @include for-desktop-up {
-        grid-template-columns: repeat(4, 25%);
+    grid-template-columns: repeat(4, 25%);
+    @include for-phone-only {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -236,9 +213,9 @@ svg {
     height: 25vw;
     overflow: hidden;
     text-decoration: none;
-    height: 50vw;
-    @include for-desktop-up {
-        height: 25vw;
+    height: 25vw;
+    @include for-phone-only {
+        height: 50vw;
     }
 }
 
